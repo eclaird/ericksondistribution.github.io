@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Erickson distribution</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/subbootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<style>
+@media (min-width: 768px) {
+.colstartfittings {
+margin-left: 10%; 
+}
+}
+/* USER PROFILE PAGE */
+ .card {
+    margin-top: 20px;
+    padding: 30px;
+    background-color: rgba(214, 224, 226, 0.2);
+    -webkit-border-top-left-radius:5px;
+    -moz-border-top-left-radius:5px;
+    border-top-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+    -moz-border-top-right-radius:5px;
+    border-top-right-radius:5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.card.hovercard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 1);
+}
+.card.hovercard .card-background {
+    height: 130px;
+}
+.card-background img {
+    -webkit-filter: blur(25px);
+    -moz-filter: blur(25px);
+    -o-filter: blur(25px);
+    -ms-filter: blur(25px);
+    filter: blur(25px);
+    margin-left: -100px;
+    margin-top: -200px;
+    min-width: 130%;
+}
+.card.hovercard .useravatar {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+}
+.card.hovercard .useravatar img {
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+}
+.card.hovercard .card-info {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+}
+.card.hovercard .card-info .card-title {
+    padding:0 5px;
+    font-size: 20px;
+    line-height: 1;
+    color: #262626;
+    background-color: rgba(255, 255, 255, 0.1);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.card.hovercard .card-info {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+.card.hovercard .bottom {
+    padding: 0 20px;
+    margin-bottom: 17px;
+}
+.btn-pref .btn {
+    -webkit-border-radius:0 !important;
+}
+
+body { padding-top: 60px; }
+.nav.nav-justified > li > a { position: relative; }
+.nav.nav-justified > li > a:hover,
+.nav.nav-justified > li > a:focus { background-color: transparent; }
+.nav.nav-justified > li > a > .quote {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    opacity: 0;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    background-color: #13c0ba;
+    border-radius: 15px;
+    color: #fff;  
+}
+
+.nav.nav-justified > li.active > a > .quote { opacity: 1; }
+.nav.nav-justified > li > a > img { box-shadow: 0 0 0 5px #13c0ba; }
+.nav.nav-justified > li > a > img { 
+box-shadow: 0 0 0 5px #E50000;
+    max-width: 100%; 
+    opacity: .6; 
+    -webkit-transform: scale(.8,.8);
+            transform: scale(.8,.8);
+    -webkit-transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.nav.nav-justified > li.active > a > img,
+.nav.nav-justified > li:hover > a > img,
+.nav.nav-justified > li:focus > a > img { 
+    opacity: 1; 
+    -webkit-transform: none;
+            transform: none;
+    -webkit-transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.tab-pane .tab-inner { padding: 30px 0 20px; }
+
+@media (min-width: 768px) {
+    .nav.nav-justified > li > a > .quote {
+        left: auto;
+        top: auto;
+        right: 20px;
+        bottom: 0px;
+    }  
+}
+
+@media (min-width: 768px) {
+.startfittings {
+margin-left: 15%; 
+margin-right: 15%;
+}
+}
+
+.icon {
+color: #fff;	
+}
+
+.icon:hover {
+ color: #E50000;
+}
+
+.footer-left {
+	
+}
+
+.footer-distributed .footer-right {
+    float: right;
+    margin-top: 6px;
+    max-width: 180px;
+}
+
+.footer {
+	width: 100% !important;	
+	padding-top:10px;
+	padding-left:8%;
+	padding-right:8%;
+	height: 100%;
+}
+.bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+body { 
+background-color: #FFF;
+}
+
+side-nav {
+    margin-top: 5%;
+}
+
+.large-heading {
+font-size: 60px;
+}
+.second-heading {
+font-size: 40px;
+}
+
+.heading {
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;	
+}
+
+.subheading {
+	font-size:40px;
+}
+
+.service-heading {
+color: #E50000 !important;
+}
+
+.bg-overlay {
+    background: url(img/placeholder/op-woodstairs.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    height: 240px;
+    padding-top: 10px;
+}
+</style>
+<script>
+$(document).ready(function() {
+$(".btn-pref .btn").click(function () {
+    $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+    // $(".tab").addClass("active"); // instead of this do the below 
+    $(this).removeClass("btn-default").addClass("btn-primary");   
+});
+});
+</script>
+</head>
+
+<body>
+
+    <div id="wrapper-landing">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="Ericksonhome.html"><img style="height: 30px" src="img/erickson.gif" class="img-responsive" alt="Erickson Distribution"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    
+                     <li>
+                        <a class="page-scroll navfont" href="InteriorRailings.html">Interior Railings</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll navfont" href="ExteriorRailings.html">Exterior Railings</a>
+                    </li>
+                     <li>
+                        <a class="page-scroll navfont" href="ColumnsPosts.html">Columns & Posts</a>
+                    </li>
+                     <li>
+                        <a class="page-scroll navfont" href="CapTreads.html">Cap Treads</a>
+                    </li>
+                     <li>
+                        <a class="page-scroll navfont" href="Millwork.html">Millwork</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+            
+        </nav>
+
+        <div id="page-wrapper">
+
+          <div class="container-fluid">
+
+                <!-- Page Heading -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="container">
+  <div class="row">
+                    <div class="col-lg-12">
+                    <div class="container bg-overlay" style="border: 2px solid #eee">
+	<div class="row text-center" style="margin:5%">
+		<h1 class="large-heading heading" style="color: #000;">Colonial Collection</h1>
+        <h2 style="color: #333;">Interior Railings</h2>
+       
+        
+	</div>
+</div>
+                    </div>
+                </div>
+ 
+</div>
+                </div>
+                </div>
+      <!-- /.row -->
+      
+      
+<div class="[ container text-center ]" style="padding-top: 3%;">
+	<div class="[ row ]">
+		<div class="col-sm-12" role="tabpanel">
+            <div class="col-sm-12">
+                <!-- Nav tabs -->
+                <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
+                   
+                 
+                    <li role="presentation" class="active">
+                        <a href="#spin" aria-controls="spin" role="tab" data-toggle="tab">
+                            <img style="margin-bottom:2%" class="img-circle" src="img/spindles_circle.jpg" />
+                            <h3>Spindles</h3>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#new" aria-controls="new" role="tab" data-toggle="tab">
+                            <img style="margin-bottom:2%" class="img-circle" src="img/newel_circle.jpg" />
+                            <h3>Newels</h3>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#rail" aria-controls="rail" role="tab" data-toggle="tab">
+                            <img style="margin-bottom:2%" class="img-circle" src="img/rail_circle.jpg" />
+                            <h3>Railings</h3>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#start" aria-controls="start" role="tab" data-toggle="tab">
+                            <img style="margin-bottom:2%" class="img-circle" src="img/fittings_circle.jpg" />
+                            <h3>Accessories</h3>
+                        </a>
+                    </li>
+                   
+                </ul>
+            </div>
+            <div class="col-sm-12">
+                <!-- Tab panes -->
+                <div class="tab-content" id="tabs-collapse">            
+                    <div role="tabpanel" class="tab-pane fade in active" id="spin">
+                        <div class="tab-inner">   
+                                      
+                            <div class="sm-well ericksonredbkgd"><h2 class="second-heading heading" style="color: #fff">Spindles</h2></div> 
+                  
+    
+    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <button type="button" id="stars" class="btn btn-default" href="#tab1" data-toggle="tab"><span aria-hidden="true"></span>
+                <div><h3><strong class="text-uppercase">Oak</strong></h3></div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span aria-hidden="true"></span>
+                <div><h3><strong class="text-uppercase">Hemlock</strong></h3></div>
+            </button>
+        </div>
+        
+    </div>
+
+        <div>
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab1">
+
+          <div class="row">
+            <div class="col-sm-4">
+<div style= "vertical-align:middle">
+<p>1 Square Top Spindle<BR>
+  2 Ball Top Newel<BR>
+  3 Ball Top Half Newel <br />
+  4 Unturned Baluster<BR>
+  5 Unturned Newel<br />
+</p>
+</div>
+</div>
+                            <div class="col-sm-4"><img src="img/colo_side01.gif" /></div>
+  <div class="col-sm-4"><h3>Colonial Spindles</h3>
+  <h4 class="ericksonred">1 5/8" x 1 5/8" :: Square Edge</h4>
+    <h4>32" Square Top Spindle<br />36" Square Top Spindle<br />42" Square Top Spindle</h4>
+    <hr width="30%">
+  <h3>Unturned Balusters</h3>
+  <h4 class="ericksonred">1 5/8" x 1 5/8" :: Square Edge </h4>
+  <h4>32" Unturned Baluster<br />
+    36" Unturned Baluster<br />
+    42" Unturned Baluster</h4></div></div>
+        </div>
+        <div class="tab-pane fade in" id="tab2">
+
+                   <div class="row">
+                     <div class="col-sm-4">
+<div style= "vertical-align:middle">
+<p>1 Square Top Spindle<BR>
+  2 Ball Top Newel<BR>
+  3 Ball Top Half Newel <br />
+  4 Unturned Baluster<BR>
+  5 Unturned Newel<br />
+</p>
+</div>
+</div>
+                            <div class="col-sm-4"><img src="img/colo_side01.gif" /></div>
+  <div class="col-sm-4">
+    <h3>Colonial Spindles</h3>
+    <h4 class="ericksonred">1 5/8" x 1 5/8" :: Square Edge</h4>
+    <h4>32" Square Top Spindle<br />
+      36" Square Top Spindle<br />
+      42" Square Top Spindle</h4>
+    <hr width="30%">
+    <h3>Unturned Balusters</h3>
+    <h4 class="ericksonred">1 5/8" x 1 5/8" :: Square Edge </h4>
+    <h4>32" Unturned Baluster<br />
+      36" Unturned Baluster<br />
+      42" Unturned Baluster</h4>
+    <h4>&nbsp;</h4></div></div>
+        </div>
+</div>
+    </div>
+    
+    </div>
+    </div>
+            
+    
+                            
+                            
+  
+  
+                 
+                    
+                    
+                    <div role="tabpanel" class="tab-pane fade" id="new">
+                        <div class="tab-inner">   
+                                      
+                            <div class="sm-well ericksonredbkgd"><h2 class="second-heading heading" style="color: #fff">Newels</h2></div> 
+                  
+    
+    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <button type="button" id="stars" class="btn btn-default" href="#tab4" data-toggle="tab"><span aria-hidden="true"></span>
+                <div><h3><strong class="text-uppercase">Oak</strong></h3></div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="favorites" class="btn btn-default" href="#tab5" data-toggle="tab"><span aria-hidden="true"></span>
+                <div><h3><strong class="text-uppercase">Hemlock</strong></h3></div>
+            </button>
+        </div>
+        
+    </div>
+
+        <div>
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab4">
+          <h4>Colonial Oak Newels</h4> 
+                            <h4><em class="ericksonred">3 1/2" x 3 1/2" :: Square Edge	</em></h4>   
+                            <div class="row">
+                            <div class="col-sm-4">
+<div style= "vertical-align:middle">
+<p>1 Square Top Spindle<BR>
+2 Ball Top Newel<BR>
+3 Ball Top Half Newel <br />
+4 Unturned Baluster<BR>
+5 Unturned Newel<br />
+</p>
+</div>
+</div>
+                            <div class="col-sm-4"><img src="img/colo_side01.gif" /></div>
+  <div class="col-sm-4"><h4>48" Ball Top Newel<br />60" Ball Top Newel
+<br />48" Ball Top Half Newel</h4><hr width="30%">
+  <h4>48" Unturned Newel<br />
+    60" Unturned Newel</h4></div></div>
+        </div>
+        <div class="tab-pane fade in" id="tab5">
+                   <h4>Colonial Hemlock Newels                   </h4>
+ <h4><em class="ericksonred">3 1/4" x 3 1/4" :: Square Edge</em></h4>   
+                            <div class="row">
+                            <div class="col-sm-4">
+<div style= "vertical-align:middle">
+<p>1 Square Top Spindle<BR>
+2 Ball Top Newel<BR>
+3 Ball Top Half Newel <br />
+4 Unturned Baluster<BR>
+5 Unturned Newel<br />
+</p>
+</div>
+</div>
+                            <div class="col-sm-4"><img src="img/colo_side01.gif" /></div>
+  <div class="col-sm-4"><h4>48" Ball Top Newel<br />60" Ball Top Newel
+<br />48" Ball Top Half Newel</h4><hr width="30%">
+<h4>48" Unturned Newel<br />60" Unturned Newel</h4></div></div>
+        </div>
+</div>
+    </div>
+    
+    </div>
+                    </div>
+                    
+                                        <div role="tabpanel" class="tab-pane fade" id="rail">
+                        <div class="tab-inner">   
+                                      
+                            <div class="sm-well ericksonredbkgd"><h2 class="second-heading heading" style="color: #fff">Railings</h2></div> 
+                            
+   <h3>Colonial Handrail</h3>
+   <div class="container-fluid">
+    <div class="row colstartfittings">
+  <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2"><img src="img/colo_rail01.gif" /><p>B-1 Hemlock Handrail</p>
+<p class="ericksonred">  1 1/4" x 3 1/8"<br />
+1 5/8" Plow</p>
+  <p><strong>Available in:</strong><br />
+  Hemlock
+  </p>
+  <p>4',6',8',10',<br />
+12',13',14'</p></div>
+  <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2"><img src="img/colo_rail02.gif" /><p>L-Rail Handrail</p>
+  <p class="ericksonred">1 5/8" x 3 1/4"<br />
+1 5/8" Plow</p>
+
+ <p><strong>Available in:</strong><br />
+  Hemlock</p>
+  <p>8',12',14'</p></div>
+  <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2"><img src="img/colo_rail03.gif" /><p>Handrail</p>
+  <p class="ericksonred">
+  1 5/8" x 2 5/8"<br />
+1 5/8" Plow
+  </p>
+   <strong>Available in:</strong><br />
+  Hemlock<br />
+  Oak <br />
+ </p>
+ <p>8',10',12',13',14'</p></div>
+   <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2"><img src="img/colo_rail04.gif" /><p>M-Rail Handrail</p>
+<p class="ericksonred">
+1 5/8" x 2 5/8" Solid
+</p>
+    <p><strong>Available in:</strong><br />
+  Hemlock<br />
+  Oak</p>
+  <p>4' - 13'</p></div>
+    <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2"><img src="img/colo_rail04.gif" /><p>B-2 Bottom 
+Rail</p>
+<p class="ericksonred">
+3/4" x 3 1/8"<br />
+1 5/8" Plow</p>
+    <strong>Available in:</strong><br />
+  Oak</p>
+  <p>Hemlock Lengths <br />
+4' - 14'</p>
+
+<p>Oak Lengths<br />
+8', 12'</p>
+  </div>
+</div>
+</div>
+    
+
+        
+    
+    </div> 
+                    </div>
+                    
+                    <div role="tabpanel" class="tab-pane fade" id="start">
+                        <div class="tab-inner">
+                                           <div class="sm-well ericksonredbkgd"><h2 class="second-heading heading" style="color: #fff">Accessories</h2></div>
+                    <hr>  
+                    <p>All items available in Oak and Hemlock.</p>
+                           
+                           
+                      
+                           <div class="container-fluid">
+                               <div class="row startfittings">
+  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="img/colo_acc01.gif" /><p>Rosette</p></div>
+  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="img/colo_acc02.gif" /><p>Rail Bolts With Plug</p></div>
+  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="img/colo_acc03.gif" /><p>Newel Attaching Hardware</p></div>
+   <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><img src="img/colo_acc04.gif" /><p>Sure Tite Newel Fastening System</p></div>
+</div>
+</div>
+                           
+                           
+                            
+ 
+                            
+  
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+	</div>
+    <div class="container-fluid">
+      <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-right: 0px; padding-left: 0px;">
+
+
+<div class="well" style="background-color: rgba(204, 204, 204, 0.20); margin-top: 3%; width: 100%; text-align:center;">
+  <h3 style="margin-bottom: 5%; font-weight: bold;">View more collections</h3>
+                <p><a href="RosedaleCollection.html">Rosedale Collection</a></p>
+                <hr width="20%" style="margin-top:1%; margin-bottom: 2%; color: #fff;">
+                <p><a href="HuntingtonCollection.html">Huntington Collection</a></p>
+               <hr width="20%" style="margin-top:1%; margin-bottom: 2%; color: #fff;">
+                <p><a href="HamptonCollection.html">Hampton Collection</a></p>
+        
+            </div>
+            </div>
+      
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-right: 0px; padding-left: 0px;">
+
+<div class="well" style="background-color: rgba(204, 204, 204, 0.40); margin-top: 3%; width: 100%; text-align:center;">
+  <h3 style="margin-bottom: 5%; font-weight: bold;">Looking for more information?</h3>
+  
+  <h4>We're here and ready to help!</h4>
+                
+            <a href="mailto:contactus@ericksondistribution.com" class="btn btn-default btn-xl sr-button" style="margin-top: 30px; margin-bottom: 22px; background-color: #A00303; color: #fff;"><strong>Contact Us!</strong></a>
+        
+            </div>
+            </div></div>
+            </div>
+</div>
+
+
+          </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    
+    <!--footer -->
+        <footer class="footer container-fluid bg-4">
+       <div class="row">
+                    <div class="col-lg-12">
+<div class="col-lg-6 col-md-6 col-sm-6">
+<p><span style="font-weight: bold; font-size:12pt;">Erickson distribution</span><br>
+519.894.6977<br>
+	<a style="color: #fff" href="mailto:info@ericksondistribution.com">info@ericksondistribution.com</a></p>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6">
+<span style="float:right">
+<a href="tel:+15198946977">
+<span class="fa-stack fa-lg icon">  
+<i class="fa fa-circle-thin fa-stack-2x"></i>  
+<i class="fa fa-phone fa-stack-1x"></i></span></a>
+<a href="mailto:info@ericksondistribution.com">
+<span class="fa-stack fa-lg icon">
+  <i class="fa fa-circle-thin fa-stack-2x"></i>
+  <i class="fa fa-envelope-o fa-stack-1x"></i>
+</span>
+</a>
+<a href="https://www.facebook.com/pages/Erickson-Distribution/1004464839636343" target="_blank">
+<span class="fa-stack fa-lg icon">
+  <i class="fa fa-circle-thin fa-stack-2x"></i>
+  <i class="fa fa-facebook fa-stack-1x"></i>
+</span>
+</a>
+</span>
+</div>
+</div>
+</div>
+
+
+</footer>
+
+
+
+<!-- /footer -->
+    
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
+</body>
+
+</html>

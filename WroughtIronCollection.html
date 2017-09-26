@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Erickson distribution</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/subbootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<style>
+
+body { padding-top: 60px; }
+.nav.nav-justified > li > a { position: relative; }
+.nav.nav-justified > li > a:hover,
+.nav.nav-justified > li > a:focus { background-color: transparent; }
+.nav.nav-justified > li > a > .quote {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    opacity: 0;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    background-color: #13c0ba;
+    border-radius: 15px;
+    color: #fff;  
+}
+
+.nav.nav-justified > li.active > a > .quote { opacity: 1; }
+.nav.nav-justified > li > a > img { box-shadow: 0 0 0 5px #13c0ba; }
+.nav.nav-justified > li > a > img { 
+box-shadow: 0 0 0 5px #E50000;
+    max-width: 100%; 
+    opacity: .6; 
+    -webkit-transform: scale(.8,.8);
+            transform: scale(.8,.8);
+    -webkit-transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.nav.nav-justified > li.active > a > img,
+.nav.nav-justified > li:hover > a > img,
+.nav.nav-justified > li:focus > a > img { 
+    opacity: 1; 
+    -webkit-transform: none;
+            transform: none;
+    -webkit-transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.tab-pane .tab-inner { padding: 30px 0 20px; }
+
+@media (min-width: 768px) {
+    .nav.nav-justified > li > a > .quote {
+        left: auto;
+        top: auto;
+        right: 20px;
+        bottom: 0px;
+    }  
+}
+
+@media (min-width: 768px) {
+.startfittings {
+margin-left: 15%; 
+margin-right: 15%;
+}
+}
+
+.icon {
+color: #fff;	
+}
+
+.icon:hover {
+ color: #E50000;
+}
+
+.footer-left {
+	
+}
+
+.footer-distributed .footer-right {
+    float: right;
+    margin-top: 6px;
+    max-width: 180px;
+}
+
+.footer {
+	width: 100% !important;	
+	padding-top:10px;
+	padding-left:8%;
+	padding-right:8%;
+	height: 100%;
+}
+.bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+body { 
+background-color: #FFF;
+}
+
+side-nav {
+    margin-top: 5%;
+}
+
+.large-heading {
+font-size: 60px;
+}
+.second-heading {
+font-size: 40px;
+}
+
+.heading {
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;	
+}
+
+.subheading {
+	font-size:40px;
+}
+
+.service-heading {
+color: #E50000 !important;
+}
+
+.bg-overlay {
+    background: url(img/placeholder/op-woodstairs.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    height: 240px;
+    padding-top: 10px;
+}
+</style>
+<script>
+$(document).ready(function() {
+$(".btn-pref .btn").click(function () {
+    $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+    // $(".tab").addClass("active"); // instead of this do the below 
+    $(this).removeClass("btn-default").addClass("btn-primary");   
+});
+});
+</script>
+</head>
+
+<body>
+
+    <div id="wrapper-landing">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="Ericksonhome.html"><img style="height: 30px" src="img/erickson.jpg" class="img-responsive" alt="Erickson Distribution"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    
+                     <li>
+                        <a class="page-scroll navfont" href="InteriorRailings.html">Interior Railings</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll navfont" href="ExteriorRailings.html">Exterior Railings</a>
+                    </li>
+                     <li>
+                        <a class="page-scroll navfont" href="ColumnsPosts.html">Columns & Posts</a>
+                    </li>
+                     <li>
+                        <a class="page-scroll navfont" href="CapTreads.html">Cap Treads</a>
+                    </li>
+                     <li>
+                        <a class="page-scroll navfont" href="Millwork.html">Millwork</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+            
+        </nav>
+
+        <div id="page-wrapper">
+
+          <div class="container-fluid">
+
+                <!-- Page Heading -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="container">
+  <div class="row">
+                    <div class="col-lg-12">
+                    <div class="container bg-overlay" style="border: 2px solid #eee">
+	<div class="row text-center" style="margin:5%">
+		<h1 class="large-heading heading" style="color: #000">Wrought Iron Collection</h1>
+        <h2 style="color: #333;">Interior Railings</h2>
+       
+        
+	</div>
+</div>
+                    </div>
+                </div>
+ 
+</div>
+                </div>
+                </div>
+      <!-- /.row -->
+      
+      
+<div class="[ container text-center ]" style="padding-top: 3%;">
+	
+
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                <div class="well" style="width: 100%; text-align:center;">
+  <h2 style="color: #e50000;">Wrought Iron Features</h2>
+                <p>• Choose from any of these powder coated finished: Wrinkled Black or Pewter<br>
+                  • All spindles are powder coated steel.<br>
+                • All spindles are carefully wrapped for protection against damage during shipping.
+                </p>
+                <p>Wrought iron hollow tube spindles have been laboratory tested and meet the national building code standards. Test results provided upon request.</p>
+      </div>
+      </div>
+      </div>
+      
+      <div class="row">
+                    <div class="col-lg-12">
+                                    
+                            <div class="sm-well ericksonredbkgd">
+ <h2 class="second-heading heading text-center" style="color: #fff;">Spindles</h2>
+ 
+ </div> 
+ </div>
+ </div>
+ 
+ <div class="row" style="padding-top:2%; padding-bottom: 2%">
+ <h4 class="text-center">All spindles have a square profile unless otherwise stated.</h4>
+ 
+<div class="section group">
+	<div class="col span_1_of_9 col-xs-6 col-sm-6">
+<img src="img/wro_spin01.jpg" /><p>WITL12WB<br />
+WITL12P<br />
+1/2" x 42"</p>
+	</div> 
+	<div class="col span_1_of_9 col-xs-6 col-sm-6">
+<img src="img/wro_spin02.jpg" /><p>WITL130-1WB<br />
+WITL130-1P<br />
+1/2" x 42"</p>
+	</div>
+	<div class="col span_1_of_9 col-xs-6 col-sm-6">
+<img src="img/wro_spin03.jpg" /><p>WITL130-2WB<br />
+WITL130-2P<br />
+1/2" x 42"</p>
+	</div>
+	<div class="col span_1_of_9 col-xs-6 col-sm-6">
+<img src="img/wro_spin04.jpg" /><p>WITL101-1WB<br />
+WITL101-1P<br />
+1/2" x 42"</p>
+	</div>
+	<div class="col span_1_of_9 col-xs-6 col-sm-6">
+<img src="img/wro_spin05.jpg" /><p>WITL101-2WB<br />
+WITL101-2P<br />
+1/2" x 42"</p>
+	</div>
+	<div class="col span_1_of_9 col-xs-6 col-sm-6">
+<img src="img/wro_spin06.jpg" /><p>WITL106-1WB<br />
+WITL106-0P<br />
+1/2" x 42"</p>
+	</div>
+	<div class="col span_1_of_9 col-xs-6 col-sm-6">
+<img src="img/wro_spin07.jpg" /><p>WITL106-2WB<br />
+WITL106-2P<br />
+1/2" x 42"</p>
+	</div>
+	<div class="col span_1_of_9 col-xs-6 col-sm-6">
+<img src="img/wro_spin08.jpg" /><p>WITL8127-1WB<br />
+WITL8127-0P<br />
+1/2" x 42"</p>
+<p>*Round profile</p>
+	</div>
+	<div class="col span_1_of_9 col-xs-6 col-sm-6">
+<img src="img/wro_spin09.jpg" /><p>WITL8127-2WB<br />
+WITL8127-2P<br />
+1/2" x 42"</p>
+<p>*Round profile</p>
+	</div>
+</div>
+
+      </div>
+                
+                
+ 
+
+    <div class="container-fluid">
+      <div class="row row-height">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col" style="padding-right: 0px; padding-left: 0px;">
+
+
+<div class="well col" style="background-color: rgba(204, 204, 204, 0.20); margin-top: 3%; width: 100%; text-align:center;">
+  <h3 style="margin-bottom: 5%; font-weight: bold;">View more collections</h3>
+                <p><a href="ColonialCollection.html">Colonial Collection</a></p>
+                <hr width="20%" style="margin-top:1%; margin-bottom: 2%; color: #fff;">
+                <p><a href="RosedaleCollection.html">Rosedale Collection</a></p>
+               <hr width="20%" style="margin-top:1%; margin-bottom: 2%; color: #fff;">
+                <p><a href="HamptonCollection.html">Hampton Collection</a></p>
+        
+            </div>
+            </div>
+      
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col" style="padding-right: 0px; padding-left: 0px;">
+
+<div class="well col" style="background-color: rgba(204, 204, 204, 0.40); margin-top: 3%; width: 100%; text-align:center;">
+  <h3 style="margin-bottom: 5%; font-weight: bold;">Looking for more information?</h3>
+  
+  <h4>We're here and ready to help!</h4>
+                
+            <a href="mailto:contactus@ericksondistribution.com" class="btn btn-default btn-xl sr-button" style="margin-top: 30px; margin-bottom: 22px; background-color: #A00303; color: #fff;"><strong>Contact Us!</strong></a>
+        
+            </div>
+            </div></div>
+            </div>
+</div>
+
+
+          </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    
+    <!--footer -->
+        <footer class="footer container-fluid bg-4">
+       <div class="row">
+                    <div class="col-lg-12">
+<div class="col-lg-6 col-md-6 col-sm-6">
+<p><span style="font-weight: bold; font-size:12pt;">Erickson distribution</span><br>
+519.894.6977<br>
+	<a style="color: #fff" href="mailto:info@ericksondistribution.com">info@ericksondistribution.com</a></p>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6">
+<span style="float:right">
+<a href="tel:+15198946977">
+<span class="fa-stack fa-lg icon">  
+<i class="fa fa-circle-thin fa-stack-2x"></i>  
+<i class="fa fa-phone fa-stack-1x"></i></span></a>
+<a href="mailto:info@ericksondistribution.com">
+<span class="fa-stack fa-lg icon">
+  <i class="fa fa-circle-thin fa-stack-2x"></i>
+  <i class="fa fa-envelope-o fa-stack-1x"></i>
+</span>
+</a>
+<a href="https://www.facebook.com/pages/Erickson-Distribution/1004464839636343" target="_blank">
+<span class="fa-stack fa-lg icon">
+  <i class="fa fa-circle-thin fa-stack-2x"></i>
+  <i class="fa fa-facebook fa-stack-1x"></i>
+</span>
+</a>
+</span>
+</div>
+</div>
+</div>
+
+
+</footer>
+
+
+
+<!-- /footer -->
+    
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
+</body>
+
+</html>
